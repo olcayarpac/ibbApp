@@ -26,6 +26,22 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import GetLocation from 'react-native-get-location'
+
+
+// gets the current location of phone
+GetLocation.getCurrentPosition({
+  enableHighAccuracy: true,
+  timeout: 15000,
+})
+.then(location => {
+  console.log(location);
+})
+.catch(error => {
+  const { code, message } = error;
+  console.warn(code, message);
+})
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
